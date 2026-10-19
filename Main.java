@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -5,19 +6,19 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         Calculadora calc = new Calculadora();
 
-        System.out.print("Operação (+, -, *, /, r para raiz): ");
-        char op = sc.next().charAt(0);
-
-        System.out.print("Digite o primeiro número: ");
-        double a = sc.nextDouble();
-
-        double b = 0;
-        if (op != 'r') {
-            System.out.print("Digite o segundo número: ");
-            b = sc.nextDouble();
-        }
-
         try {
+            System.out.print("Operação (+, -, *, /, r para raiz): ");
+            char op = sc.next().charAt(0);
+
+            System.out.print("Digite o primeiro número: ");
+            double a = sc.nextDouble();
+
+            double b = 0;
+            if (op != 'r') {
+                System.out.print("Digite o segundo número: ");
+                b = sc.nextDouble();
+            }
+
             if (op == '+') {
                 System.out.println("Resultado: " + calc.somar(a, b));
             } else if (op == '-') {
@@ -31,6 +32,8 @@ public class Main {
             } else {
                 System.out.println("Operação inválida!");
             }
+        } catch (InputMismatchException e) {
+            System.out.println("Erro: digite apenas números.");
         } catch (Exception e) {
             System.out.println("Erro: " + e.getMessage());
         }
