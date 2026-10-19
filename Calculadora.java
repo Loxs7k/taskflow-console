@@ -1,42 +1,28 @@
-import java.util.Scanner;
-
 public class Calculadora {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
 
-        System.out.print("Operação (+, -, *, /, r para raiz): ");
-        char op = sc.next().charAt(0);
+    public double somar(double a, double b) {
+        return a + b;
+    }
 
-        System.out.print("Digite o primeiro número: ");
-        double a = sc.nextDouble();
+    public double subtrair(double a, double b) {
+        return a - b;
+    }
 
-        if (op == 'r') {
-            if (a < 0) {
-                System.out.println("Erro: raiz de número negativo!");
-            } else {
-                System.out.println("Resultado: " + Math.sqrt(a));
-            }
-        } else {
-            System.out.print("Digite o segundo número: ");
-            double b = sc.nextDouble();
+    public double multiplicar(double a, double b) {
+        return a * b;
+    }
 
-            if (op == '+') {
-                System.out.println("Resultado: " + (a + b));
-            } else if (op == '-') {
-                System.out.println("Resultado: " + (a - b));
-            } else if (op == '*') {
-                System.out.println("Resultado: " + (a * b));
-            } else if (op == '/') {
-                if (b == 0) {
-                    System.out.println("Erro: divisão por zero!");
-                } else {
-                    System.out.println("Resultado: " + (a / b));
-                }
-            } else {
-                System.out.println("Operação inválida!");
-            }
+    public double dividir(double a, double b) {
+        if (b == 0) {
+            throw new ArithmeticException("Divisão por zero.");
         }
+        return a / b;
+    }
 
-        sc.close();
+    public double raizQuadrada(double a) {
+        if (a < 0) {
+            throw new IllegalArgumentException("Raiz de número negativo.");
+        }
+        return Math.sqrt(a);
     }
 }
